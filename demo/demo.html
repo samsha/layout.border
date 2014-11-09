@@ -1,0 +1,29 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title>Border Layout Demo</title>
+    <style>
+        div, header, footer {
+            border: solid 1px #888;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="layout">
+    <header data-options="region:'north', height: '50'">
+        Header
+    </header>
+    <div class="layout" data-options="region:'center'">
+        <div data-options="region:'north', height: '45'">north</div>
+        <div data-options="region:'center'">center</div>
+        <div data-options="region:'west', width: '15%', min-width: 100, max-width: '250'">West</div>
+        <div data-options="region:'east', width: '20%', min-width: 100, max-width: '300'">East</div>
+    </div>
+    <footer data-options="region:'south', height: '30'" class="footer">
+        footer
+    </footer>
+    <script src="../lib/jquery.js"></script>
+    <script src="../src/layout.border.js"></script>
+</body>
+</html>
