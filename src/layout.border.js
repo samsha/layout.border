@@ -87,7 +87,7 @@
           if(temp){
             temp = calculateLength(temp, width, west._data['min-width'], west._data['max-width']);
             left = temp;
-            temp2 = west._data.left || 0;
+            temp2 = parseInt(west._data.left) || 0;
             if(temp2){
               widthRest -= temp2;
               left += temp2;
@@ -100,7 +100,7 @@
           temp = east._data.width;
           if(temp){
             temp = calculateLength(temp, width, east._data['min-width'], east._data['max-width']);
-            temp2 = east._data.right || 0;
+            temp2 = parseInt(east._data.right) || 0;
             if(temp2){
               widthRest -= temp2;
             }
