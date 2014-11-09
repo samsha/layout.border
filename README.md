@@ -91,5 +91,5 @@
 </html>
 ```
 ##运行效果
-![简单布局](screenshot/border.layout.mix.png)
+![嵌套布局](screenshot/border.layout.mix.png)
 
