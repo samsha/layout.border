@@ -3,26 +3,40 @@
  */
 ;(function ($){
   'use strict';
+  function _isNumber(n) {
+    return n instanceof Number || (typeof n == "number");
+  }
   $.fn.borderLayout = function() {
     var setBounds = function(element, bounds){
       element.style.position = 'absolute';
       element.style.boxSizing = 'border-box';
       for(var name in bounds){
-        element.style[name] = bounds[name];
+        var v = bounds[name];
+        if(_isNumber(v)){
+          v = parseInt(v) + 'px';
+        }
+        element.style[name] = v;
       }
     };
-    var calculateLength = function(sNumber, sum, min, max){
-      var n;
+    var toNumber = function(sNumber, sum){
       if(sNumber[sNumber.length - 1] === '%'){
-        n = sum * parseInt(sNumber) / 100;
-      }else{
-        n = parseInt(sNumber) || sum * 0.1;
+        return sum * parseInt(sNumber) / 100;
       }
-      if(min && n < min){
-        return min;
+      return parseInt(sNumber);
+    }
+    var calculateLength = function(sNumber, sum, min, max){
+      var n = toNumber(sNumber, sum);
+      if(min){
+        min = toNumber(min, sum);
+        if(n < min){
+          return min;
+        }
       }
-      if(max && n > max){
-        return max;
+      if(max){
+        max = toNumber(max, sum);
+        if(n > max){
+          return max;
+        }
       }
       return n;
     };
@@ -30,7 +44,7 @@
       this.style.boxSizing = 'border-box';
       this.style.overflow = 'hidden';
       if(this == document.body || $(this).hasClass('layout--body')){
-        setBounds(this, {top: '0px', bottom: '0px', left: '0px', right: '0px'})
+        setBounds(this, {top: 0, bottom: 0, left: 0, right: 0})
       }
       var isH = $(this).hasClass('layout--h');
 
@@ -93,7 +107,7 @@
               left += temp2;
             }
             widthRest -= temp;
-            setBounds(west, {top: top + 'px', left: temp2 + 'px', width: temp + 'px', height: heightRest + 'px'});
+            setBounds(west, {top: top, left: temp2, width: temp, height: heightRest});
           }
         }
         if(east){
@@ -105,7 +119,7 @@
               widthRest -= temp2;
             }
             widthRest -= temp;
-            setBounds(east, {top: top + 'px', right: temp2 + 'px', width: temp + 'px', height: heightRest + 'px'});
+            setBounds(east, {top: top, right: temp2, width: temp, height: heightRest});
           }
         }
       }
@@ -116,7 +130,7 @@
             temp = calculateLength(temp, height, north._data['min-height'], north._data['max-height']);
             heightRest -= temp;
             top = temp;
-            setBounds(north, {top: 0, left: left + 'px', width: widthRest + 'px', height: temp + 'px'});
+            setBounds(north, {top: 0, left: left, width: widthRest, height: temp});
           }
         }
         if(south){
@@ -124,7 +138,7 @@
           if(temp){
             temp = calculateLength(temp, height, south._data['min-height'], south._data['max-height']);
             heightRest -= temp;
-            setBounds(south, {bottom: 0, left: left + 'px', height: temp + 'px', width: widthRest + 'px'});
+            setBounds(south, {bottom: 0, left: left, height: temp, width: widthRest});
           }
         }
       }
@@ -136,7 +150,7 @@
         setWestAndEast();
       }
       if(center){
-        setBounds(center, {top: top + 'px', left: left + 'px', width: widthRest + 'px', height: heightRest + 'px'});
+        setBounds(center, {top: top, left: left, width: widthRest, height: heightRest});
       }
     });
   };
