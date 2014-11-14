@@ -50,7 +50,6 @@
 
       var width = this.clientWidth;
       var height = this.clientHeight;
-      console.log(this.className + ', ' + height);
       var i = 0;
       var children = this.children;
       var center, north, south, east, west;
@@ -155,8 +154,9 @@
     });
   };
   $(function(){
-    var container = $('.layout');
-    container.borderLayout();
-    $(window).resize(container.borderLayout.bind(container));
+    $('.layout').borderLayout();
+    $(window).resize(function(){
+      $('.layout').borderLayout();
+    });
   });
 })(jQuery);
