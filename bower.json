@@ -2,11 +2,10 @@
   "name": "layout.border",
   "description": "border layout for HTML.",
   "version": "0.1",
+  "license": "MIT",
   "keywords": [
-    "css",
-    "js",
-    "framework",
-    "web"
+    "layout",
+    "javascript"
   ],
   "main": [
     "src/layout.border.js"
@@ -14,9 +13,12 @@
   "homepage": "https://github.com/samsha/layout.border",
   "ignore": [
     "**/.*",
-    "bower_components",
     "demo",
-    "screenshot"
+    "screenshot",
+    "test",
+    "*.md",
+    "Gruntfile.js",
+    "package.json"
 
   ],
   "dependencies": {
