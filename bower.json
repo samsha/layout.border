@@ -13,6 +13,7 @@
   "homepage": "https://github.com/samsha/layout.border",
   "ignore": [
     "**/.*",
+    "lib",
     "demo",
     "screenshot",
     "test",
