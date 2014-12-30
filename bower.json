@@ -1,0 +1,25 @@
+{
+  "name": "layout.border",
+  "description": "border layout for HTML.",
+  "version": "0.1",
+  "keywords": [
+    "css",
+    "js",
+    "framework",
+    "web"
+  ],
+  "main": [
+    "src/layout.border.js"
+  ],
+  "homepage": "https://github.com/samsha/layout.border",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "demo",
+    "screenshot"
+
+  ],
+  "dependencies": {
+    "jquery": ">= 1.0"
+  }
+}
