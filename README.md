@@ -6,6 +6,9 @@
 # 依赖
 需要用到jquery
 
+# 使用bower
+```bower install layout.border
+```
 # 示例
 ##首先引入jquery.js和layout.border.js
 ```js
