@@ -17,6 +17,7 @@
         }
         element.style[name] = v;
       }
+      $(element).trigger('size.change');
     };
     var toNumber = function(sNumber, sum){
       if(sNumber[sNumber.length - 1] === '%'){
